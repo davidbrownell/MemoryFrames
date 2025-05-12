@@ -1,4 +1,4 @@
-"""This file serves as an example of how to create scripts that can be invoked from the command line once the package is installed."""
+"""An example of how to create scripts that can be invoked from the command line once the package is installed."""
 
 import sys
 
@@ -10,11 +10,10 @@ from MemoryFrames import Math, __version__
 
 
 # ----------------------------------------------------------------------
-class NaturalOrderGrouper(TyperGroup):
-    # pylint: disable=missing-class-docstring
+class NaturalOrderGrouper(TyperGroup):  # noqa: D101
     # ----------------------------------------------------------------------
-    def list_commands(self, *args, **kwargs):  # pylint: disable=unused-argument
-        return self.commands.keys()
+    def list_commands(self, *args, **kwargs) -> list[str]:  # noqa: ARG002, D102
+        return list(self.commands.keys())  # pragma: no cover
 
 
 # ----------------------------------------------------------------------
@@ -33,7 +32,7 @@ def Add(
     x: int,
     y: int,
 ) -> None:
-    """Adds 2 values."""
+    """Add 2 values."""
 
     sys.stdout.write(str(Math.Add(x, y)))
 
@@ -44,7 +43,7 @@ def Sub(
     x: int,
     y: int,
 ) -> None:
-    """Subtracts 2 values."""
+    """Subtract 2 values."""
 
     sys.stdout.write(str(Math.Sub(x, y)))
 
@@ -55,7 +54,7 @@ def Mult(
     x: int,
     y: int,
 ) -> None:
-    """Multiplies 2 values."""
+    """Multiplie 2 values."""
 
     sys.stdout.write(str(Math.Mult(x, y)))
 
@@ -66,7 +65,7 @@ def Div(
     x: int,
     y: int,
 ) -> None:
-    """Divides 1 value by another."""
+    """Divide 1 value by another."""
 
     sys.stdout.write(str(Math.Div(x, y)))
 
@@ -74,7 +73,7 @@ def Div(
 # ----------------------------------------------------------------------
 @app.command("Version")
 def Version() -> None:
-    """Prints the version of the package."""
+    """Print the version of the package."""
 
     sys.stdout.write(__version__)
 
