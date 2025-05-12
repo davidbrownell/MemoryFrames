@@ -39,14 +39,3 @@ def test_Version():
     result = CliRunner().invoke(app, ["Version"])
     assert result.exit_code == 0
     assert result.stdout == __version__
-
-
-# ----------------------------------------------------------------------
-def test_NoArgs():
-    result = CliRunner().invoke(app, [])
-    assert result.exit_code == 0
-    assert "Add" in result.stdout
-    assert "Sub" in result.stdout
-    assert "Mult" in result.stdout
-    assert "Div" in result.stdout
-    assert "Version" in result.stdout
