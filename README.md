@@ -4,7 +4,7 @@
 **Package:**
 [![PyPI - Python Version](https://img.shields.io/pypi/pyversions/MemoryFrames?color=dark-green)](https://pypi.org/project/MemoryFrames/)
 [![PyPI - Version](https://img.shields.io/pypi/v/MemoryFrames?color=dark-green)](https://pypi.org/project/MemoryFrames/)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/MemoryFrames)](https://pypistats.org/packages/MemoryFrames)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/MemoryFrames)](https://pypistats.org/packages/memoryframes)
 
 **Development:**
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)

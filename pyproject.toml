@@ -1,5 +1,12 @@
 [project]
 name = "MemoryFrames"
+version = "0.0.0"
+#          ^^^^^
+# Wheel names will be generated according to this value. Do not manually modify this value; instead
+# update it according to committed changes by running this command from the root of the repository:
+#
+#   uv run python -m AutoGitSemVer.scripts.UpdatePythonVersion ./pyproject.toml ./src
+
 description = "Add your description here"
 readme = "README.md"
 authors = [
@@ -7,7 +14,6 @@ authors = [
 ]
 requires-python = ">= 3.10"
 dependencies = []
-dynamic = ["version"]
 classifiers = [
     "Operating System :: MacOS",
     "Operating System :: Microsoft :: Windows",
@@ -28,12 +34,12 @@ Documentation = "https://github.com/davidbrownell/MemoryFrames"
 Repository = "https://github.com/davidbrownell/MemoryFrames"
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.8.15,<0.9.0"]
+build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
-    "autogitsemver>=0.8.4",
+    "autogitsemver>=0.9.2",
     "pre-commit>=4.2.0",
     "py-minisign>=0.12.0",
     "pytest>=8.4.1",
@@ -41,11 +47,8 @@ dev = [
     "ruff>=0.12.3",
 ]
 
-[tool.hatch.version]
-path = "src/MemoryFrames/__init__.py"
-
 [tool.pytest.ini_options]
-addopts = "--verbose -vv --capture=no --cov=MemoryFrames --cov-report term --cov-report xml:coverage.xml --cov-fail-under=95.0"
+addopts = "--verbose -vv --capture=no --cov=MemoryFrames --cov-report html --cov-report term --cov-report xml:coverage.xml --cov-fail-under=95.0"
 python_files = [
     "**/*Test.py",
 ]
@@ -88,3 +91,6 @@ max-complexity = 15
 max-args = 10
 max-branches = 20
 max-returns = 20
+
+[tool.uv.build-backend]
+module-name = "MemoryFrames"
