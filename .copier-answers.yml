@@ -18,5 +18,5 @@ github_username: davidbrownell
 license: MIT
 project_name: MemoryFrames
 python_package_name: MemoryFrames
-python_versions: 3.10, 3.11, 3.12, 3.13
+python_versions: 3.14
 sign_artifacts_question: true
