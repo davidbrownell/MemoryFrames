@@ -15,8 +15,10 @@ class UserExperienceInfo:
         # to introduce a new user experience type (as all plugins, across the world, must be
         # updated to support it.
         if not sys.flags.optimize:
-            pass
-            # TODO: # Avoid circular import issues by importing here
-            # TODO: from MemoryFrames.PluginInfra.TextualUserExperienceInfo import TextualUserExperienceInfo
+            # Avoid circular import issues by importing here
+            from MemoryFrames.PluginInfra.TextualUserExperienceInfo import TextualUserExperienceInfo  # noqa: PLC0415
 
-            # TODO: assert isinstance(self, (TextualUserExperienceInfo,)), self
+            assert isinstance(
+                self,
+                (TextualUserExperienceInfo,),
+            ), self
