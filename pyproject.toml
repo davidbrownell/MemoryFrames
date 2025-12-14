@@ -17,6 +17,7 @@ dependencies = [
     "dbrownell-common>=0.16.0",
     "pluggy>=1.6.0",
     "python-frontmatter>=1.1.0",
+    "rtyaml>=1.0.0",
     "textual>=6.8.0",
     "typer>=0.20.0",
     "typer-config>=1.4.3",
@@ -31,6 +32,9 @@ classifiers = [
 
 [project.license]
 text = "MIT"
+
+[project.scripts]
+memoryframes = "MemoryFrames.__main__:app"
 
 [project.urls]
 Homepage = "https://github.com/davidbrownell/MemoryFrames"
@@ -47,6 +51,7 @@ dev = [
     "dbrownell-commitemojis>=0.2.0",
     "pre-commit>=4.5.0",
     "py-minisign>=0.13.0",
+    "pyfakefs>=5.10.2",
     "pytest>=9.0.2",
     "pytest-cov>=7.0.0",
     "ruff>=0.14.9",

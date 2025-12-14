@@ -1,5 +1,6 @@
 from unittest.mock import Mock
 from pathlib import Path
+from typing import ClassVar
 
 import pytest
 
@@ -25,30 +26,19 @@ class TestPlugin:
     def test_Creation(self):
         # ----------------------------------------------------------------------
         class MyPlugin(Plugin):
-            @property
-            def name(self) -> str:
-                return "MyPlugin"
-
-            @property
-            def author(self) -> str:
-                return "AuthorName"
-
-            @property
-            def description(self) -> str:
-                return "A description of MyPlugin."
-
-            @property
-            def plugin_priority(self) -> int:
-                return 10
+            NAME: ClassVar[str] = "MyPlugin"
+            AUTHOR: ClassVar[str] = "AuthorName"
+            DESCRIPTION: ClassVar[str] = "A description of MyPlugin."
+            PLUGIN_PRIORITY: ClassVar[int] = 10
 
         # ----------------------------------------------------------------------
 
         my_plugin = MyPlugin(Path("/tmp"))
 
-        assert my_plugin.name == "MyPlugin"
-        assert my_plugin.author == "AuthorName"
-        assert my_plugin.description == "A description of MyPlugin."
-        assert my_plugin.plugin_priority == 10
+        assert my_plugin.NAME == "MyPlugin"
+        assert my_plugin.AUTHOR == "AuthorName"
+        assert my_plugin.DESCRIPTION == "A description of MyPlugin."
+        assert my_plugin.PLUGIN_PRIORITY == 10
         assert my_plugin.unique_name == "AuthorName_MyPlugin"
         assert my_plugin.working_dir == Path("/tmp") / "AuthorName_MyPlugin"
         assert my_plugin.GetNoteSource(Mock(), Mock()) is None
@@ -58,21 +48,10 @@ class TestPlugin:
     def test_ScrubbedDir(self, invalid_char):
         # ----------------------------------------------------------------------
         class MyPlugin(Plugin):
-            @property
-            def name(self) -> str:
-                return f"My{invalid_char}Plugin"
-
-            @property
-            def author(self) -> str:
-                return f"Author{invalid_char}Name"
-
-            @property
-            def description(self) -> str:
-                return f"A description of MyPlugin ({invalid_char})."
-
-            @property
-            def plugin_priority(self) -> int:
-                return 10
+            NAME: ClassVar[str] = f"My{invalid_char}Plugin"
+            AUTHOR: ClassVar[str] = f"Author{invalid_char}Name"
+            DESCRIPTION: ClassVar[str] = f"A description of MyPlugin ({invalid_char})."
+            PLUGIN_PRIORITY: ClassVar[int] = 10
 
         # ----------------------------------------------------------------------
 
