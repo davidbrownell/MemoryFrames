@@ -1,7 +1,6 @@
-from abc import ABC, abstractmethod
 from dataclasses import dataclass
 from functools import cached_property
-from typing import TYPE_CHECKING
+from typing import ClassVar, TYPE_CHECKING
 
 import pluggy
 
@@ -31,14 +30,31 @@ class ThreadInfo:
 
 
 # ----------------------------------------------------------------------
-class Plugin(ABC):
+class Plugin:
     """Base class for all MemoryFrames plugins."""
+
+    # ----------------------------------------------------------------------
+    NAME: ClassVar[str] = ""
+    """The name of the plugin."""
+
+    AUTHOR: ClassVar[str] = ""
+    """The author of the plugin. This value will be used in the plugin's unique name."""
+
+    DESCRIPTION: ClassVar[str] = ""
+    """The description of the plugin."""
+
+    PLUGIN_PRIORITY: ClassVar[int] = 0
+    """The priority of the plugin. Higher values indicate higher priority, which will cause the plugin to appear before other lower priority plugins."""
 
     # ----------------------------------------------------------------------
     def __init__(
         self,
         root_data_dir: Path,
     ) -> None:
+        assert self.__class__.NAME, "Derived classes must set the NAME class variable"
+        assert self.__class__.AUTHOR, "Derived classes must set the AUTHOR class variable"
+        assert self.__class__.DESCRIPTION, "Derived classes must set the DESCRIPTION class variable"
+
         scrubbed_unique_name = self.unique_name
 
         for invalid_char in ["<", ">", ":", '"', "/", "\\", "|", "?", "*", "."]:
@@ -47,34 +63,10 @@ class Plugin(ABC):
         self.working_dir = root_data_dir / scrubbed_unique_name
 
     # ----------------------------------------------------------------------
-    @property
-    @abstractmethod
-    def name(self) -> str:
-        """The name of the plugin."""
-        raise NotImplementedError()  # pragma: no cover
-
-    @property
-    @abstractmethod
-    def author(self) -> str:
-        """The author of the plugin. This value will be used in the plugin's unique name."""
-        raise NotImplementedError()  # pragma: no cover
-
-    @property
-    @abstractmethod
-    def description(self) -> str:
-        """The description of the plugin."""
-        raise NotImplementedError()  # pragma: no cover
-
-    @property
-    @abstractmethod
-    def plugin_priority(self) -> int:
-        """The priority of the plugin. Higher values indicate higher priority, which will cause the plugin to appear before other lower priority plugins."""
-        raise NotImplementedError()  # pragma: no cover
-
     @cached_property
     def unique_name(self) -> str:
         """The unique name of the plugin."""
-        return f"{self.author}_{self.name}"
+        return f"{self.__class__.AUTHOR}_{self.__class__.NAME}"
 
     # ----------------------------------------------------------------------
     def GetNoteSource(
