@@ -3,7 +3,7 @@ import textwrap
 from pathlib import Path
 from unittest.mock import Mock
 
-from MemoryFrames.Settings import Settings
+from MemoryFrames.PluginInfra.Settings import Settings
 
 
 # ----------------------------------------------------------------------

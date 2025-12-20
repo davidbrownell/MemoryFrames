@@ -4,7 +4,7 @@ from MemoryFrames.PluginInfra.UserExperienceInfo import UserExperienceInfo
 
 if TYPE_CHECKING:
     from textual.app import App
-    from textual.containers import Vertical
+    from textual.containers import VerticalScroll
 
 
 # ----------------------------------------------------------------------
@@ -15,7 +15,7 @@ class TextualUserExperienceInfo(UserExperienceInfo):
     def __init__(
         self,
         app: App,
-        hierarchy_container: Vertical,
+        hierarchy_container: VerticalScroll,
     ) -> None:
         super().__init__()
 

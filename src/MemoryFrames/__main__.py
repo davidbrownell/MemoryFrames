@@ -8,8 +8,8 @@ import typer
 
 from typer.core import TyperGroup
 
-from MemoryFrames.Settings import Settings
 from MemoryFrames import TextualUserExperience
+from MemoryFrames.PluginInfra.Settings import Settings
 
 
 # ----------------------------------------------------------------------

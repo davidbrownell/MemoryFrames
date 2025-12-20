@@ -12,6 +12,7 @@ if TYPE_CHECKING:
     from pathlib import Path
 
     from MemoryFrames.PluginInfra.NoteSource import NoteSource, NoteSourceObserver
+    from MemoryFrames.PluginInfra.Settings import Settings
     from MemoryFrames.PluginInfra.UserExperienceInfo import UserExperienceInfo
 
 
@@ -81,8 +82,7 @@ class Plugin:
 # ----------------------------------------------------------------------
 @pluggy.HookspecMarker(APP_NAME)
 def GetPlugin(
-    root_data_dir: Path,
-    all_plugins_settings: dict[str, object],
+    settings: Settings,
     user_experience_info: UserExperienceInfo,
 ) -> Plugin:
     """Return a Plugin instance."""

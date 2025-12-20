@@ -4,7 +4,7 @@ from unittest.mock import Mock
 from typer.testing import CliRunner
 
 from MemoryFrames.__main__ import app
-from MemoryFrames.Settings import Settings
+from MemoryFrames.PluginInfra.Settings import Settings
 
 
 # ----------------------------------------------------------------------
