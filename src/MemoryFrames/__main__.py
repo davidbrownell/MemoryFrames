@@ -1,6 +1,6 @@
 import os
 
-from enum import Enum
+from enum import StrEnum
 from pathlib import Path
 from typing import Annotated
 
@@ -46,7 +46,7 @@ def _GetWorkingDir() -> Path:
 
 
 # ----------------------------------------------------------------------
-class _ExperienceType(str, Enum):
+class _ExperienceType(StrEnum):
     Textual = "Textual"
 
 
