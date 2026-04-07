@@ -121,12 +121,12 @@ class _LoadingModal(ModalScreen[AppState]):
                     else:
                         assert False, event_type  # noqa: B011, PT015
 
-                    loading_module._status_label.content = msg  # noqa: SLF001
+                    loading_module._status_label.content = msg
 
                 # ----------------------------------------------------------------------
                 @override
                 def OnException(self, exception: Exception) -> None:
-                    if loading_module._settings.debug:  # noqa: SLF001
+                    if loading_module._settings.debug:
                         msg = "".join(traceback.format_exception(exception))
                     else:
                         msg = str(exception)
